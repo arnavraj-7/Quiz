@@ -11,6 +11,7 @@ let len;
 fetchdata().then((data) => {
   storeddata = data;
   results = storeddata.results;
+  len=results.length
   //   console.log(results);
  len=results.length
 
@@ -25,7 +26,7 @@ let next = document.querySelector(".next");
 let mess = document.querySelector(".message");
 let prev = document.querySelector(".prev");
 let tmr = document.querySelector(".timer");
-let t = 5;
+let t = 30;
 let starttimer;
 let intervalId;
 let time_up=document.querySelector(".time-up")
@@ -65,7 +66,7 @@ next.addEventListener("click", (e) => {
   console.log(score);
   mess.innerHTML = "";
   i++;
-  t=5;
+  t=30;
   startQuiz();
 
 });
