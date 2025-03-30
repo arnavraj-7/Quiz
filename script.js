@@ -1,34 +1,47 @@
+let igenre=localStorage.getItem("genre")
+let idifficulty=localStorage.getItem("difficulty")
+let inoq=localStorage.getItem("noq");
+let itime=localStorage.getItem("time")
+console.log(itime);
+let APIs={
+  Anime:{
+    Easy:"https://api.npoint.io/1a55fbb4d4b47fb8dcda",
+    Moderate:"https://api.npoint.io/https://api.npoint.io/7a278590dc722ccd961b",
+    Difficult:"https://api.npoint.io/c112d73edc2acde87b38"
+  },
+  Movie:{
+    
+  }
+}
+console.log(APIs[igenre][idifficulty]);
 async function fetchdata() {
-  // let res = await fetch("https://api.npoint.io/c074ba1ef8b8c8214011");
-  // let res = await fetch("https://api.npoint.io/bc69bd408e05c99dafea");
-  let res = await fetch(
-    "https://opentdb.com/api.php?amount=10&category=31&difficulty=easy&type=multiple"
-  );
+  let res = await fetch(APIs[igenre][idifficulty]);
   let data = await res.json();
   return data;
 }
-let len;
+let results;
+// let len;
 fetchdata().then((data) => {
   storeddata = data;
   results = storeddata.results;
-  len=results.length
+  // len=results.length
   //   console.log(results);
- len=results.length
+//  len=results.length
 
   startQuiz();
 });
 let score = 0;
 let storeddata;
-let results;
 let i = 0;
 let qdiv = document.querySelector(".question");
 let next = document.querySelector(".next");
 let mess = document.querySelector(".message");
 let prev = document.querySelector(".prev");
 let tmr = document.querySelector(".timer");
-let t = 30;
+let t = parseInt(itime);
 let starttimer;
-let intervalId;
+let intervalId;//interval id
+let ahead;//timeout id
 let time_up=document.querySelector(".time-up")
 
 function startTimer(){
@@ -59,16 +72,22 @@ function timer() {
   }
 }
 
-// next button
-next.addEventListener("click", (e) => {
-  clearInterval(intervalId); 
+//next function
+function nextf(){
+  clearInterval(intervalId);
+  clearTimeout(ahead);
+  ahead=null; 
   intervalId=null
   console.log(score);
   mess.innerHTML = "";
   i++;
-  t=30;
+  t=parseInt(itime);
   startQuiz();
+}
 
+// next button
+next.addEventListener("click", (e) => {
+nextf()
 });
 //prev button
 // prev.addEventListener("click", (e) => {
@@ -126,13 +145,7 @@ const displayOption = function () {
     element.removeEventListener("click", handleClick);
   });
 
-  // for(let j=0;j<4;j++){
-  //   if(options[j]==results[i].correct_answer){
-  //     ci=j
-  //   }
-
-  // }
-
+  
   //reseting white color and adding Event Listeners
   buttons.forEach((element) => {
     element.classList.remove("btn-styles-correct","btn-styles-wrong")
@@ -143,6 +156,7 @@ const displayOption = function () {
   });
   return options;
 };
+
 function findcorrectbutton() {
   let optionbutton = Array.from(document.querySelectorAll(".options button"));
   console.log(optionbutton);
@@ -161,7 +175,7 @@ const handleClick = (event) => {
   intervalId=null
   checkans(element, element.innerHTML);
   disablebutton();
-  if (i >= len-1) {
+  if (i >= inoq-1) {
     m = `Your Score is:${score}`;
     message(m);
     let nextContainer=document.querySelector(".next-container")
@@ -169,8 +183,7 @@ const handleClick = (event) => {
     return;
   }
 };
-// "#4CAF50"C 
-// "#E74C3C"W
+
 //checking answers and updating score
 const checkans = (element, selected) => {
   // console.log(results[i].correct_answer);
@@ -178,8 +191,11 @@ const checkans = (element, selected) => {
   if (selected == results[i].correct_answer) {
     element.classList.remove("btn-styles")
     element.classList.add("btn-styles-correct")
-    m = "Correct Answer";
-    findcorrectbutton();
+    // m = "Correct Answer";
+   ahead=setTimeout(()=>{
+     nextf() 
+    },3000)
+
     // message(m);
     score++;
   }
@@ -197,14 +213,14 @@ const checkans = (element, selected) => {
 };
 
 //message and displaying it
-const message = (m) => {
-  mess.innerHTML = m;
-};
+// const message = (m) => {
+//   mess.innerHTML = m;
+// };
 
 //main quiz function
 function startQuiz() {
   console.log(results);
-  console.log(len);
+  // console.log(len);
   next.disabled=true
   displayQuestion();
   displayOption();
