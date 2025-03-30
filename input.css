@@ -1,0 +1,33 @@
+@import "tailwindcss";
+@layer components {
+  .ques-styles {
+    @apply mt-12 min-h-20 max-w-110 font-medium
+    [font-family:Raleway,sans-serif] [font-size:20px];
+  }
+  .btn-styles {
+    @apply pl-2 pr-2 text-left h-10 w-105 border-blue-700 border-2 
+             rounded bg-white cursor-pointer hover:bg-slate-300 
+             [font-family:'Raleway',sans-serif] [font-size:18px] duration-300 ease-in hover:scale-105;
+             
+  }
+  .btn-styles-wrong {
+    @apply pl-2 pr-2 text-left h-10 w-105 border-blue-700 border-2 
+             rounded bg-red-500 cursor-pointer hover:bg-red-600
+             [font-family:'Raleway',sans-serif] [font-size:18px] duration-300 ease-out hover:scale-105;
+             
+  }
+  .btn-styles-correct {
+    @apply pl-2 pr-2 text-left h-10 w-105 border-blue-700 border-2 
+             rounded bg-green-400 cursor-pointer hover:bg-green-500
+             [font-family:'Raleway',sans-serif] [font-size:18px] duration-300 ease-out hover:scale-105;
+             
+  }
+  .blur{
+    filter: blur(2px);
+    transition: filter 0.3s ease-in-out;
+  }
+  /* .white{
+    @apply bg-white
+  } */
+}
+
