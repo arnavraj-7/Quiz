@@ -4,7 +4,9 @@ let igenre;
 let idifficulty;
 let inoq;
 let itime;
-
+window.onload = function () {
+  document.querySelector(".container").classList.remove("opacity-0");
+}
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   igenre = document.querySelector(".genre").value;
