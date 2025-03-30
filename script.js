@@ -7,10 +7,13 @@ async function fetchdata() {
   let data = await res.json();
   return data;
 }
+let len;
 fetchdata().then((data) => {
   storeddata = data;
   results = storeddata.results;
   //   console.log(results);
+ len=results.length
+
   startQuiz();
 });
 let score = 0;
@@ -157,7 +160,7 @@ const handleClick = (event) => {
   intervalId=null
   checkans(element, element.innerHTML);
   disablebutton();
-  if (i >= 14) {
+  if (i >= len-1) {
     m = `Your Score is:${score}`;
     message(m);
     let nextContainer=document.querySelector(".next-container")
@@ -199,6 +202,8 @@ const message = (m) => {
 
 //main quiz function
 function startQuiz() {
+  console.log(results);
+  console.log(len);
   next.disabled=true
   displayQuestion();
   displayOption();
