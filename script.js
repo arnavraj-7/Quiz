@@ -2,7 +2,9 @@ let igenre=localStorage.getItem("genre")
 let idifficulty=localStorage.getItem("difficulty")
 let inoq=localStorage.getItem("noq");
 let itime=localStorage.getItem("time")
-console.log(itime);
+// console.log(itime); debugging
+// console.log(inoq);debugging
+
 let APIs={
   Anime:{
     Easy:"https://api.npoint.io/1a55fbb4d4b47fb8dcda",
@@ -42,6 +44,7 @@ let t = parseInt(itime);
 let starttimer;
 let intervalId;//interval id
 let ahead;//timeout id
+let blurtimeout;
 let time_up=document.querySelector(".time-up")
 
 function startTimer(){
@@ -62,18 +65,20 @@ function timer() {
     content.classList.add("blur")
     console.log(time_up);
     time_up.innerHTML="Time Up"
-    setTimeout(()=>
+    let blurtimeout=setTimeout(()=>
       { time_up.innerHTML=""
         content.classList.remove("blur")
     },2000)
     
     checkans()
+    CheckQuizend()
     return;
   }
 }
 
 //next function
 function nextf(){
+  clearTimeout(blurtimeout);
   clearInterval(intervalId);
   clearTimeout(ahead);
   ahead=null; 
@@ -138,7 +143,7 @@ const displayOption = function () {
 
   //enabling all buttons
   enablebutton();
-  console.log("Answer:" + results[i].correct_answer);
+  // console.log("Answer:" + results[i].correct_answer);
 
   //removing prev Event Listeners
   buttons.forEach((element) => {
@@ -159,14 +164,15 @@ const displayOption = function () {
 
 function findcorrectbutton() {
   let optionbutton = Array.from(document.querySelectorAll(".options button"));
-  console.log(optionbutton);
+  // console.log(optionbutton);
   for (let j = 0; j < 4; j++) {
     if (optionbutton[j].innerHTML == results[i].correct_answer) {
-      console.log(optionbutton[j].innerHTML);
+      // console.log(optionbutton[j].innerHTML);
       return optionbutton[j];
     }
   }
 }
+
 
 //handling clicks
 const handleClick = (event) => {
@@ -175,13 +181,7 @@ const handleClick = (event) => {
   intervalId=null
   checkans(element, element.innerHTML);
   disablebutton();
-  if (i >= inoq-1) {
-    m = `Your Score is:${score}`;
-    message(m);
-    let nextContainer=document.querySelector(".next-container")
-    nextContainer.innerHTML = "Quiz is Over";
-    return;
-  }
+  CheckQuizend()
 };
 
 //checking answers and updating score
@@ -206,21 +206,32 @@ const checkans = (element, selected) => {
     element.classList.remove("btn-styles")
     element.classList.add("btn-styles-wrong")
     findcorrectbutton().classList.add("btn-styles-correct")
+    ahead=setTimeout(()=>{
+      nextf() 
+     },3000)
     // message(m);
   } 
 
   next.disabled=false
 };
+function CheckQuizend(){
+  if (i >= parseInt(inoq)-1) {
+    m = `Your Score is:${score}`;
+    message(m);
+    let nextContainer=document.querySelector(".next-container")
+    nextContainer.innerHTML = "Quiz is Over";
+    return;
+  }
+}
 
-//message and displaying it
-// const message = (m) => {
-//   mess.innerHTML = m;
-// };
+// message and displaying it
+const message = (m) => {
+  mess.innerHTML = m;
+};
 
 //main quiz function
 function startQuiz() {
-  console.log(results);
-  // console.log(len);
+  // console.log(results);
   next.disabled=true
   displayQuestion();
   displayOption();

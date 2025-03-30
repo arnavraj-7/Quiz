@@ -11,7 +11,7 @@ form.addEventListener("submit", (e) => {
   idifficulty = document.querySelector(".difficulty").value;
   inoq = document.querySelector(".noq").value;
   itime=document.querySelector(".time").value;
-  console.log([igenre,idifficulty,inoq]);
+  console.log([igenre,idifficulty,inoq,itime]);
   localStorage.setItem("genre", igenre);
   localStorage.setItem("difficulty", idifficulty);
   localStorage.setItem("noq", inoq);
