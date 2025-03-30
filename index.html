@@ -9,12 +9,12 @@
 </head>
 
 <body class="bg-blue-600 flex justify-center items-center h-screen">
-    <div class="container flex flex-col bg-amber-50 w-105 rounded p-6 relative">
-        <div class="Welcome text-blue-400 text-3xl flex justify-center">Welcome to MyQuiz App</div>
-        <div class="flex ml-6  flex-col mt-3 mb-3">
+    <div class="container flex flex-col bg-amber-50 w-80 rounded pt-3 pb-1 md:p-6 relative md:w-105">
+        <div class="Welcome text-blue-400 text-3xl flex justify-center">Welcome to MyQuiz</div>
+        <div class="flex md:ml-6 ml-7 flex-col mt-3 mb-3">
             <form action="">
                 <div class="">
-                    <label for="genre">Select your Topic</label>
+                    <label for="genre">Topic</label>
                     <select class="genre select" name="genre">
                         <option value="selected" selected disabled>Select</option>
                         <option value="Anime">Anime</option>
@@ -30,7 +30,7 @@
                 </div>
 
                 <div>
-                    <label for="difficulty">Select Difficulty</label>
+                    <label for="difficulty">Difficulty</label>
                     <select name="difficulty" class="difficulty select"  id="">
                         <option value="Select" disabled selected>Select</option>
                         <option value="Easy">Easy</option>
@@ -38,7 +38,7 @@
                         <option value="Difficult">Difficult</option>
                     </select>
                     <div>
-                        <label for="genre">Select Number of Questions</label>
+                        <label for="genre">Number of Questions</label>
                         <select name="noq" class="noq select"  id="">
                             <option value="Select" disabled selected>Select</option>
                             <option value="10">10</option>
@@ -47,7 +47,7 @@
                         </select>
                     </div>
                     <div>
-                        <label for="time">Select Time for each question</label>
+                        <label for="time">Time per question</label>
                         <select name="time" class="time select"  id="">
                             <option value="Select" disabled selected>Select</option>
                             <option value="10">10seconds</option>
@@ -60,7 +60,7 @@
                     
                 </div>
                 
-                <div class="flex justify-center"> <button class="submit bg-blue-400 w-15 rounded-full text-white" type="submit">Start</button></div>
+                <div class="mt-4"> <button class="submit mb-0 translate-x-25 bg-blue-400 w-15 rounded-full text-white" type="submit">Start</button></div>
             </form>
         </div>
     </div>
