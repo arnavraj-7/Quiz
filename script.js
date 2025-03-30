@@ -51,7 +51,16 @@ function startTimer(){
   if(!intervalId)
  {intervalId = setInterval(timer, 1000);}
 }
-
+function toBlur(m,time){
+  let content=document.querySelector(".content")
+  content.classList.add("blur")
+  console.log(time_up);
+  time_up.innerHTML=m
+  let blurtimeout=setTimeout(()=>
+    { time_up.innerHTML=""
+      content.classList.remove("blur")
+  },time)
+}
 function timer() {
   if (t >= 0) {
     tmr.innerHTML = t;
@@ -61,15 +70,7 @@ function timer() {
     clearInterval(intervalId);
     intervalId=null
     mess.innerHTML="Times up"
-    let content=document.querySelector(".content")
-    content.classList.add("blur")
-    console.log(time_up);
-    time_up.innerHTML="Time Up"
-    let blurtimeout=setTimeout(()=>
-      { time_up.innerHTML=""
-        content.classList.remove("blur")
-    },2000)
-    
+    toBlur("Times up",2000)
     checkans()
     CheckQuizend()
     return;
@@ -200,6 +201,7 @@ const checkans = (element, selected) => {
     score++;
   }
   else if(element==null && selected==null){
+    disablebutton()
     findcorrectbutton().classList.add("btn-styles-correct")}
   else {
     // m = `Incorrect Answer ,Correct Answer is ${results[i].correct_answer}`;
@@ -219,7 +221,10 @@ function CheckQuizend(){
     m = `Your Score is:${score}`;
     message(m);
     let nextContainer=document.querySelector(".next-container")
+    toBlur(`Quiz is Over <br>
+     Your Score is: ${score}`,5000)
     nextContainer.innerHTML = "Quiz is Over";
+    clearTimeout(ahead)
     return;
   }
 }

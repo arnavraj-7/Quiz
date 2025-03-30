@@ -8,13 +8,14 @@
     <link rel="stylesheet" href="output.css">
 </head>
 
-<body class="bg-blue-600 flex justify-center items-center h-screen">
-    <div class="container flex flex-col bg-amber-50 w-80 rounded pt-3 pb-1 md:p-6 relative md:w-105">
-        <div class="Welcome text-blue-400 text-3xl flex justify-center">Welcome to MyQuiz</div>
-        <div class="flex md:ml-6 ml-7 flex-col mt-3 mb-3">
+<body class="bg-gray-900  flex justify-center items-center h-screen">
+    <div class="container flex items-center flex-col bg-gray-800 w-80 rounded pt-3 pb-1 md:p-6 relative md:w-105">
+        <div class="Welcome  text-4xl text-purple-400 font-bold flex justify-center mb-2">Welcome to MyQuiz</div>
+        <div class="text-gray-400">Choose your preferences Before starting.</div>
+        <div class="flex  flex-col mt-3 mb-3">
             <form action="">
                 <div class="">
-                    <label for="genre">Topic</label>
+                    <label for="genre" class="label">Topic</label><br>
                     <select class="genre select" name="genre">
                         <option value="selected" selected disabled>Select</option>
                         <option value="Anime">Anime</option>
@@ -30,7 +31,7 @@
                 </div>
 
                 <div>
-                    <label for="difficulty">Difficulty</label>
+                    <label for="difficulty" class="label">Difficulty</label><br>
                     <select name="difficulty" class="difficulty select"  id="">
                         <option value="Select" disabled selected>Select</option>
                         <option value="Easy">Easy</option>
@@ -38,16 +39,16 @@
                         <option value="Difficult">Difficult</option>
                     </select>
                     <div>
-                        <label for="genre">Number of Questions</label>
+                        <label class="label" for="genre">Number of Questions</label><br>
                         <select name="noq" class="noq select"  id="">
                             <option value="Select" disabled selected>Select</option>
+                            <option value="5">5</option>
                             <option value="10">10</option>
                             <option value="15">15</option>
-                            <option value="20">20</option>
                         </select>
                     </div>
                     <div>
-                        <label for="time">Time per question</label>
+                        <label class="label" for="time">Time per question</label><br>
                         <select name="time" class="time select"  id="">
                             <option value="Select" disabled selected>Select</option>
                             <option value="10">10seconds</option>
@@ -60,7 +61,7 @@
                     
                 </div>
                 
-                <div class="mt-4"> <button class="submit mb-0 translate-x-25 bg-blue-400 w-15 rounded-full text-white" type="submit">Start</button></div>
+                <div class="mt-4"> <button class="cursor-pointer hover:bg-purple-700 hover:scale-110 ease-out duration-300 submit bg-purple-500 w-15 rounded w-90 text-white flex justify-center h-10 items-center" type="submit">Start Quiz</button></div>
             </form>
         </div>
     </div>
