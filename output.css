@@ -24,6 +24,7 @@
     --text-3xl: 1.875rem;
     --text-3xl--line-height: calc(2.25 / 1.875);
     --font-weight-medium: 500;
+    --font-weight-extrabold: 800;
     --ease-in: cubic-bezier(0.4, 0, 1, 1);
     --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --default-transition-duration: 150ms;
@@ -226,9 +227,6 @@
   .left-3\.5 {
     left: calc(var(--spacing) * 3.5);
   }
-  .left-20 {
-    left: calc(var(--spacing) * 20);
-  }
   .z-0 {
     z-index: 0;
   }
@@ -322,11 +320,6 @@
   .border-collapse {
     border-collapse: collapse;
   }
-  .translate-2 {
-    --tw-translate-x: calc(var(--spacing) * 2);
-    --tw-translate-y: calc(var(--spacing) * 2);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
   .-translate-x-1 {
     --tw-translate-x: calc(var(--spacing) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
@@ -335,24 +328,8 @@
     --tw-translate-x: calc(calc(1/2 * 100%) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
-  .translate-x-2 {
-    --tw-translate-x: calc(var(--spacing) * 2);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
-  .translate-x-10 {
-    --tw-translate-x: calc(var(--spacing) * 10);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
-  .translate-x-20 {
-    --tw-translate-x: calc(var(--spacing) * 20);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
   .translate-x-25 {
     --tw-translate-x: calc(var(--spacing) * 25);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
-  .translate-x-30 {
-    --tw-translate-x: calc(var(--spacing) * 30);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .-translate-y-1 {
@@ -429,6 +406,16 @@
   }
   .\[font-size\:20px\] {
     font-size: 20px;
+  }
+  .\[font-size\:25px\] {
+    font-size: 25px;
+  }
+  .\[font-size\:30px\] {
+    font-size: 30px;
+  }
+  .font-extrabold {
+    --tw-font-weight: var(--font-weight-extrabold);
+    font-weight: var(--font-weight-extrabold);
   }
   .text-blue-400 {
     color: var(--color-blue-400);
@@ -685,6 +672,10 @@
   inherits: false;
   initial-value: solid;
 }
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
 @property --tw-outline-style {
   syntax: "*";
   inherits: false;
@@ -744,10 +735,6 @@
   syntax: "*";
   inherits: false;
   initial-value: 1;
-}
-@property --tw-font-weight {
-  syntax: "*";
-  inherits: false;
 }
 @property --tw-duration {
   syntax: "*";
