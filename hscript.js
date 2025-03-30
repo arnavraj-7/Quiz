@@ -16,6 +16,6 @@ form.addEventListener("submit", (e) => {
   localStorage.setItem("difficulty", idifficulty);
   localStorage.setItem("noq", inoq);
   localStorage.setItem("time", itime);
-  window.location.href = "index.html";
+  window.location.href = "quiz.html";
 });
 
