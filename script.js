@@ -8,8 +8,8 @@ let itime=localStorage.getItem("time")
 let APIs={
   Anime:{
     Easy:"https://api.npoint.io/1a55fbb4d4b47fb8dcda",
-    Moderate:"https://api.npoint.io/https://api.npoint.io/7a278590dc722ccd961b",
-    Difficult:"https://api.npoint.io/c112d73edc2acde87b38"
+    Moderate:"https://api.npoint.io/1a55fbb4d4b47fb8dcda", 
+    Difficult:"https:/ q/api.npoint.io/c112d73edc2acde87b38"
   },
   Movie:{
     
