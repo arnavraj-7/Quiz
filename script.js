@@ -2,8 +2,25 @@ let igenre=localStorage.getItem("genre")
 let idifficulty=localStorage.getItem("difficulty")
 let inoq=localStorage.getItem("noq");
 let itime=localStorage.getItem("time")
+let img=["backgrounds/bg-1.avif","backgrounds/bg-3.jpg","backgrounds/bg-2.jpg","backgrounds/bg-4.jpg","backgrounds/bg-5.jpg"]
+let body=document.querySelector("body")
 // console.log(itime); debugging
 // console.log(inoq);debugging
+console.log(body);
+const changeBackground=()=>{
+  img.sort(() => Math.random() - 0.5);
+  bg_class=img[0];
+  body.style.backgroundImage = `url('${bg_class}')`;
+  body.style.backgroundSize = "cover"; // Ensure full coverage
+  body.style.backgroundPosition = "center"; 
+  body.style.transition = "background 1s ease-in-out"; 
+}
+
+
+function callchangeBackground(){
+  setInterval((changeBackground),5000)
+}
+callchangeBackground()
 
 let APIs={
   Anime:{
@@ -46,16 +63,17 @@ let intervalId;//interval id
 let ahead;//timeout id
 let blurtimeout;
 let time_up=document.querySelector(".time-up")
+let Final_score=document.querySelector(".Final_score")
 
 function startTimer(){
   if(!intervalId)
  {intervalId = setInterval(timer, 1000);}
 }
-function toBlur(m,time){
+function toBlur(m,time,element){
   let content=document.querySelector(".content")
   content.classList.add("blur")
   console.log(time_up);
-  time_up.innerHTML=m
+  element.innerHTML=m
   let blurtimeout=setTimeout(()=>
     { time_up.innerHTML=""
       content.classList.remove("blur")
@@ -70,7 +88,7 @@ function timer() {
     clearInterval(intervalId);
     intervalId=null
     mess.innerHTML="Times up"
-    toBlur("Times up",2000)
+    toBlur("Times up",2000,time_up)
     checkans()
     CheckQuizend()
     return;
@@ -222,7 +240,7 @@ function CheckQuizend(){
     message(m);
     let nextContainer=document.querySelector(".next-container")
     toBlur(`Quiz is Over <br>
-     Your Score is: ${score}`,5000)
+     Your Score is: ${score}`,5000,Final_score)
     nextContainer.innerHTML = "Quiz is Over";
     clearTimeout(ahead)
     return;
